@@ -21,7 +21,6 @@ import teachingHeader from "../../resources/teaching-search-header.png";
 const TeachingsSearchPage = (props) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-    const [toggleSwitch, setToggleSwitch] = useState(true);
     const [teachingsAreLoading, setTeachingsAreLoading] = useState(true);
     const [searchParamsHaveSetSelectedFilters, setSearchParamsHaveSetSelectedFilters] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -106,7 +105,6 @@ const TeachingsSearchPage = (props) => {
                                </AccordionSummary>
                                <AccordionDetails sx={{padding: 0}}>
                                    <FilterSidebar
-                                       toggleSwitch={toggleSwitch}
                                        onFilterChange={setSelectedFilters}
                                        selectedFilters={selectedFilters}
                                        filters={availableFilters}
@@ -115,7 +113,6 @@ const TeachingsSearchPage = (props) => {
                         </Accordion>
                        }{ !isMobile &&
                            <FilterSidebar
-                               toggleSwitch={toggleSwitch}
                                onFilterChange={setSelectedFilters}
                                selectedFilters={selectedFilters}
                                filters={availableFilters}
@@ -127,11 +124,6 @@ const TeachingsSearchPage = (props) => {
                                 selectedFilters={selectedFilters}
                                 teachings={filteredTeachings}
                             />
-                           <FormControlLabel
-                               control={<Switch defaultChecked/>}
-                               label="Topical Filter Options"
-                               onChange={(event, value) => setToggleSwitch(value)}
-                           />
                         </div>
                    </div>
                }

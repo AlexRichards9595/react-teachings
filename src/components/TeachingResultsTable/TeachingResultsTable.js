@@ -15,23 +15,24 @@ import closeIcon from "../../resources/cancel__icon.png";
 import * as _ from 'underscore';
 import {Link} from "react-router-dom";
 
+const sortOptions = [
+    {display: 'Title (A-Z)', sortTeachings: (teachings) => _.sortBy(teachings, 'Title')},
+    {display: 'Title (Z-A)', sortTeachings: (teachings) => _.sortBy(teachings, 'Title').reverse()},
+    {display: 'Teacher (A-Z)', sortTeachings: (teachings) => _.sortBy(teachings, 'AuthorsFormatted')},
+    {display: 'Teacher (Z-A)', sortTeachings: (teachings) => _.sortBy(teachings, 'AuthorsFormatted').reverse()},
+    {display: 'Year (Newest)', sortTeachings: (teachings) => _.sortBy(teachings, 'Year').reverse()},
+    {display: 'Year (Oldest)', sortTeachings: (teachings) => _.sortBy(teachings, 'Year')},
+];
 
 const TeachingResultsTable = (props) => {
     const theme = useTheme();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [pills, setPills] = useState([]);
-    const [selectedSort, setSelectedSort] = useState(null);
+    const [selectedSort, setSelectedSort] = useState(sortOptions[4]);
     const [teachingsTable, setTeachingsTable] = useState(props.teachings);
 
-    const sortOptions = [
-        {display: 'Title (A-Z)', sortTeachings: (teachings) => _.sortBy(teachings, 'Title')},
-        {display: 'Title (Z-A)', sortTeachings: (teachings) => _.sortBy(teachings, 'Title').reverse()},
-        {display: 'Teacher (A-Z)', sortTeachings: (teachings) => _.sortBy(teachings, 'AuthorsFormatted')},
-        {display: 'Teacher (Z-A)', sortTeachings: (teachings) => _.sortBy(teachings, 'AuthorsFormatted').reverse()},
-        {display: 'Year (Newest)', sortTeachings: (teachings) => _.sortBy(teachings, 'Year').reverse()},
-        {display: 'Year (Oldest)', sortTeachings: (teachings) => _.sortBy(teachings, 'Year')},
-    ];
+
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -41,6 +42,10 @@ const TeachingResultsTable = (props) => {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
+
+    useEffect(() => {
+        setTeachingsTable(selectedSort.sortTeachings(props.teachings))
+    }, []);
 
     useEffect(() => {
         selectedSort ?
@@ -130,6 +135,7 @@ const TeachingResultsTable = (props) => {
                             id="sort-select"
                             label={"Sort By"}
                             onChange={((e) => setSelectedSort(sortOptions[e.target.value]))}
+                            defaultValue={4}
                         >
                             {sortOptions.map((sortOption, index) => {
                                 return <MenuItem value={index}>{sortOption.display}</MenuItem>

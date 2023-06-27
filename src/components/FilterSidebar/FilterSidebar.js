@@ -53,25 +53,6 @@ const FilterSidebar = (props) => {
                 <h2>Filter by:</h2>
                 <FormControl component="fieldset" sx={{width: "100%"}}>
                     <FormGroup className={styles.EntireSidebar}>
-                        {!props.toggleSwitch &&
-                            <ToggleButtonGroup
-                                row
-                                exclusive
-                                aria-label="bibleOrTopical"
-                                value={props.selectedFilters.topical}
-                                name="bibleOrTopical"
-                                onChange={(e, value) => {
-                                    if (value) {
-                                        props.onFilterChange({...props.selectedFilters, "topical": parseInt(value)})
-                                    } else {
-                                        props.onFilterChange({...props.selectedFilters, "topical": null})
-                                    }
-                                }}
-                            >
-                                <ToggleButton defaultChecked value={null}>Bible Teachings</ToggleButton>
-                                <ToggleButton disabled={!props.filters.topical.includes(1)} value={1}>Topical Teachings</ToggleButton>
-                            </ToggleButtonGroup>
-                        }
                         <Autocomplete
                             id="bibleBook"
                             blurOnSelect
