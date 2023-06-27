@@ -1,0 +1,41 @@
+.Loading {
+    display: flex;
+    flex-direction: column;
+}
+
+.ProgressContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    margin: auto;
+}
+
+.TeachingsSearchPage {
+    display: flex;
+    flex-direction: column;
+}
+
+.TeachingSearchBody {
+    width: 90vw;
+    min-height: 90vh;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.HeaderImage {
+    width: 100vw;
+    height: 20vh;
+}
+
+.Results {
+    width: 100%;
+}
+
+
+@media (max-width: 900px) {
+    .TeachingSearchBody {
+        flex-direction: column;
+    }
+}

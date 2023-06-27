@@ -1,0 +1,131 @@
+.TeachingResultsTable {
+    background-color: white;
+    width: 100%;
+}
+
+.TableContainer {
+    width: 100%;
+    overflow: hidden;
+    padding: .75rem;
+    margin: 2rem 1rem;
+}
+
+.PillsAndSort {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.PillRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.Pill {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: .85rem;
+    outline: 1px solid black;
+    border-radius: 12px;
+    padding: 5px;
+    margin: .5rem;
+    pointer-events: none;
+}
+
+.RemoveButton {
+    height: .9rem;
+    width: .9rem;
+    margin-right: 3px;
+    pointer-events: auto;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.Pill:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+    transition: background-color .5s ease-in-out;
+}
+
+.SortSelect {
+    width: 20%;
+}
+
+.TeachingGridHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: auto;
+    padding: 5px;
+    border-top: 2px grey solid;
+}
+
+.TeachingRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    margin: auto;
+    border: 2px grey solid;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+.TeachingRow:hover {
+    border-color: #72DB2B;
+}
+
+.TitleCell {
+    width: 30%;
+}
+
+.TeacherCell {
+    width: 20%;
+}
+
+.PassageCell {
+    width: 40%;
+}
+
+.YearCell {
+    width: 10%;
+}
+
+@media (max-width: 900px) {
+    .TableContainer {
+        width: auto;
+        margin: auto;
+        margin-top: 1rem;
+    }
+    .PillsAndSort {
+        flex-direction: column;
+    }
+
+    .PillRow{
+        margin-bottom: .5rem;
+    }
+
+    .Pill {
+        margin: .25rem;
+    }
+
+    .SortSelect {
+        width: 100%;
+    }
+
+    .TeachingRow {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .TeachingRow > * {
+        margin: .25rem;
+        width: 90%;
+    }
+}
